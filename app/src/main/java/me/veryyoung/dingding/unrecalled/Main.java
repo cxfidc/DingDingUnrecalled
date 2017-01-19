@@ -15,6 +15,7 @@ import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 import static de.robv.android.xposed.XposedHelpers.findClass;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.newInstance;
+import static me.veryyoung.dingding.unrecalled.VersionParam.MESSAGE_DS_CLASS_NAME;
 
 
 public class Main implements IXposedHookLoadPackage {
@@ -23,7 +24,6 @@ public class Main implements IXposedHookLoadPackage {
 
     private static final String MESSAGE_CLASS_NAME = "com.alibaba.wukong.im.message.MessageImpl";
     private static final String CONVERSATION_CLASS_NAME = "com.alibaba.wukong.im.conversation.ConversationImpl";
-    private static final String MESSAGE_DS_CLASS_NAME = "cuw";
     private static final String RECALLED_MSG_TEXT = "Msg has been recalled.";
     private static final int NUM_MESSAGE_TEXT_TYPE = 1;
 
