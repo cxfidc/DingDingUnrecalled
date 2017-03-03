@@ -1,5 +1,9 @@
 package me.veryyoung.dingding.unrecalled;
 
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.text.TextUtils;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -16,6 +20,7 @@ import static de.robv.android.xposed.XposedHelpers.findClass;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.newInstance;
 import static me.veryyoung.dingding.unrecalled.VersionParam.MESSAGE_DS_CLASS_NAME;
+import static me.veryyoung.dingding.unrecalled.VersionParam.init;
 
 
 public class Main implements IXposedHookLoadPackage {
@@ -27,12 +32,17 @@ public class Main implements IXposedHookLoadPackage {
     private static final String RECALLED_MSG_TEXT = "Msg has been recalled.";
     private static final int NUM_MESSAGE_TEXT_TYPE = 1;
 
+    private static String dingdingVersion = "";
+
 
     @Override
     public void handleLoadPackage(final LoadPackageParam lpparam) throws Throwable {
 
 
         if (lpparam.packageName.equals(DINGDING_PACKAGE_NAME)) {
+
+            initVersion(lpparam);
+
 
             findAndHookMethod(MESSAGE_CLASS_NAME, lpparam.classLoader, "recallStatus", new XC_MethodHook() {
                 @Override
@@ -98,6 +108,15 @@ public class Main implements IXposedHookLoadPackage {
 
         if (type == NUM_MESSAGE_TEXT_TYPE) {
             callMethod(innerContent, "setText", newText);
+        }
+    }
+
+    private void initVersion(LoadPackageParam lpparam) throws PackageManager.NameNotFoundException {
+        if (TextUtils.isEmpty(dingdingVersion)) {
+            Context context = (Context) callMethod(callStaticMethod(findClass("android.app.ActivityThread", null), "currentActivityThread", new Object[0]), "getSystemContext", new Object[0]);
+            String versionName = context.getPackageManager().getPackageInfo(lpparam.packageName, 0).versionName;
+            dingdingVersion = versionName;
+            init(versionName);
         }
     }
 

@@ -5,7 +5,7 @@ package me.veryyoung.dingding.unrecalled;
  */
 public class VersionParam {
 
-    public static String MESSAGE_DS_CLASS_NAME = "cwz";
+    public static String MESSAGE_DS_CLASS_NAME = "cuy";
 
     public static void init(String version) {
         switch (version) {
@@ -17,8 +17,11 @@ public class VersionParam {
             case "3.3.5":
                 MESSAGE_DS_CLASS_NAME = "cwz";
                 break;
+            case "3.4.0":
+                MESSAGE_DS_CLASS_NAME = "cuy";
+                break;
             default:
-                MESSAGE_DS_CLASS_NAME = "cwz";
+                MESSAGE_DS_CLASS_NAME = "cuy";
 
         }
     }
