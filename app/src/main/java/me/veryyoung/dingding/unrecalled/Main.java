@@ -19,7 +19,7 @@ import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 import static de.robv.android.xposed.XposedHelpers.findClass;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.newInstance;
-import static me.veryyoung.dingding.unrecalled.VersionParam.MESSAGE_DS_CLASS_NAME;
+import static me.veryyoung.dingding.unrecalled.VersionParam.MessageDs;
 import static me.veryyoung.dingding.unrecalled.VersionParam.init;
 
 
@@ -58,10 +58,10 @@ public class Main implements IXposedHookLoadPackage {
             });
 
             // stop replacing message content with default recalled string in database
-            findAndHookMethod(MESSAGE_DS_CLASS_NAME, lpparam.classLoader, "b", String.class, Collection.class, new XC_MethodHook() {
+            findAndHookMethod(MessageDs, lpparam.classLoader, "b", String.class, Collection.class, new XC_MethodHook() {
                 @Override
                 protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-                    final Class<?> messageDS = findClass(MESSAGE_DS_CLASS_NAME, lpparam.classLoader);
+                    final Class<?> messageDS = findClass(MessageDs, lpparam.classLoader);
                     final String dbName = (String) callStaticMethod(messageDS, "getReadableDatabase");
 
                     Object conversation = newInstance(findClass(CONVERSATION_CLASS_NAME, lpparam.classLoader));

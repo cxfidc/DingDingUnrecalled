@@ -5,23 +5,26 @@ package me.veryyoung.dingding.unrecalled;
  */
 public class VersionParam {
 
-    public static String MESSAGE_DS_CLASS_NAME = "cuy";
+    public static String MessageDs = "cxw";
 
     public static void init(String version) {
         switch (version) {
             case "3.3.0":
             case "3.3.1":
-                MESSAGE_DS_CLASS_NAME = "cuw";
+                MessageDs = "cuw";
                 break;
             case "3.3.3":
             case "3.3.5":
-                MESSAGE_DS_CLASS_NAME = "cwz";
+                MessageDs = "cwz";
                 break;
             case "3.4.0":
-                MESSAGE_DS_CLASS_NAME = "cuy";
+                MessageDs = "cuy";
+                break;
+            case "3.4.6":
+                MessageDs = "cxw";
                 break;
             default:
-                MESSAGE_DS_CLASS_NAME = "cuy";
+                MessageDs = "cxw";
 
         }
     }
