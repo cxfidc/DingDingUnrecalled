@@ -5,7 +5,7 @@ package me.veryyoung.dingding.unrecalled;
  */
 public class VersionParam {
 
-    public static String MessageDs = "cxw";
+    public static String MessageDs = "dey";
 
     public static void init(String version) {
         switch (version) {
@@ -23,8 +23,11 @@ public class VersionParam {
             case "3.4.6":
                 MessageDs = "cxw";
                 break;
+            case "3.4.8":
+                MessageDs = "dey";
+                break;
             default:
-                MessageDs = "cxw";
+                MessageDs = "dey";
 
         }
     }
