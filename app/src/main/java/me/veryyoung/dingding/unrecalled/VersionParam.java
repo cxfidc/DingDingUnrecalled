@@ -24,6 +24,7 @@ public class VersionParam {
                 MessageDs = "cxw";
                 break;
             case "3.4.8":
+            case "3.4.10":
                 MessageDs = "dey";
                 break;
             default:
