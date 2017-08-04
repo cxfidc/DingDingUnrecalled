@@ -5,7 +5,7 @@ package me.veryyoung.dingding.unrecalled;
  */
 public class VersionParam {
 
-    public static String MessageDs = "ekb";
+    public static String MessageDs = "eli";
 
     public static void init(String version) {
         switch (version) {
@@ -33,8 +33,11 @@ public class VersionParam {
             case "3.5.1":
                 MessageDs = "ekb";
                 break;
+            case "3.5.2":
+                MessageDs = "eli";
+                break;
             default:
-                MessageDs = "ekb";
+                MessageDs = "eli";
 
         }
     }
